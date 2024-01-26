@@ -15,9 +15,23 @@ class ProductsService
     {
         $this->repository = $repository;
     }
-    //crear 
-    public function storeProduct(ProductRequest $product)
+    /**
+     * Method to create a Product
+     * 
+     * 
+     */
+    public function storeProduct($product)
     {
-        dd($product->all());
+        // try {
+            $productStored = $this->repository->store($product);
+
+            return [
+                "cod" => "codigo",
+                "msg" => "Product Succesfully stored",
+                "data" => $productStored
+            ];
+        // } catch(\Exception $error) {
+        //     return $error->getMessage();
+        // }
     }
 }

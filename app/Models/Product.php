@@ -16,7 +16,6 @@ class Product extends Model
         "product_price",
         "product_category",
         "product_stock",
-        "product_provider",
         "product_image",
         "product_state",
         "product_review"

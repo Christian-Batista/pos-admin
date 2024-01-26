@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("product_name");
             $table->string("product_description");
-            $table->decimal("product_price", 2);
+            $table->decimal("product_price",8, 2);
             $table->string("product_category");
             $table->integer("product_stock");
             $table->unsignedInteger("product_state")->nullable();

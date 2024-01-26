@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Products;
 
 use App\Http\Requests\ProductRequest;
 use App\Services\Products\ProductsService;
+use Illuminate\Http\JsonResponse;
 
 class ProductController
 {
@@ -15,9 +16,15 @@ class ProductController
     {
         $this->productService = $productService;
     }
-    public function create(ProductRequest $request)
+    public function create(ProductRequest $request): JsonResponse
     {
-        dd($request->all());
+        
         $response = $this->productService->storeProduct($request);
+
+        return response()->json([
+            "cod" => $response["cod"],
+            "msg" => $response["msg"],
+            "data" => $response["data"]
+        ]);
     }
 }
