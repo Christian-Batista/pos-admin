@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Products\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware(\App\Http\Middleware\AuthApiToken::class)->prefix('pos-admin')->group(function () {
+    Route::prefix("products")->group(function(){
+        Route::post("create", [ProductController::class, "create"]);
+    });
 });
